@@ -1,32 +1,31 @@
-DROP TABLE if exists jouer;
-DROP TABLE if exists film;
-DROP TABLE if exists individu;
+DROP TABLE if exists play;
+DROP TABLE if exists movies;
+DROP TABLE if exists stars;
 
-create table individu(
-	num_ind serial constraint pk_individu primary key,
-	nom character varying(50) NOT NULL,
-	prenom character varying(50) NOT NULL,
-	date_naissance date
+create table stars(
+	id serial constraint pk_individu primary key,
+	name character varying(150) NOT NULL,
+	birthdate date
 );
 
-CREATE TABLE film
+CREATE TABLE movies
 (
-    num_film serial 
+    id serial 
 			CONSTRAINT pk_film PRIMARY KEY,
-    titre character varying(220) NOT NULL,
-    annee smallint NOT NULL 
-			CONSTRAINT chk_annee_cine CHECK (annee >= 1888),
-    genre character varying(15) 
-			default 'Drame',      
-    duree smallint
-		CONSTRAINT chk_duree_cine CHECK (duree >= 0),
-    num_real integer 
+    title character varying(250) NOT NULL,
+    year smallint NOT NULL 
+			CONSTRAINT chk_year CHECK (year >= 1888),
+    genres character varying(200) 
+			default 'Drama',      
+    duration smallint
+		CONSTRAINT chk_duration CHECK (duration >= 0),
+    id_director integer 
 			NULL	
-			CONSTRAINT fk_film_real REFERENCES individu (num_ind)
+			CONSTRAINT fk_film_real REFERENCES stars (id)
 );
 
-create table jouer(
-	num_act integer constraint fk1_jouer references individu(num_ind),
-	num_film integer constraint fk2_jouer references film(num_film),
-	role character varying(50),
-	constraint pk_jouer primary key (num_act,num_film));
+create table play(
+	id_actor integer constraint fk1_play references stars(id),
+	id_movie integer constraint fk2_play references movies(id),
+	role character varying(100),
+	constraint pk_play primary key (id_actor,id_movie));

@@ -12,8 +12,6 @@ create schema cinema authorization cinema;
 set role cinema;
 
 \i pg_cine_ddl.sql;
-\i pg_cine_views.sql;
-\i pg_cine_data.sql;
-\i pg_cine_plsql.sql;
-\i pg_cine_data2.sql;
-\i pg_cine_security.sql;
+\i pg_cine_data_stars.sql;
+\i pg_cine_data_movies.sql;
+\i pg_cine_data_play.sql;
