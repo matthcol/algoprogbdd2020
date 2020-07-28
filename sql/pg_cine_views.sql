@@ -1,13 +1,8 @@
-DROP VIEW if exists film_real;
-DROP VIEW if exists film_qt;
+create or replace view movies_007 as select * from movies where id in 
+(55928,57076,58150,59800,62512,64757,66995,70328,71807,76752,79574,82398,86034,90264,93428,97742,113189,120347,143145,246460,381061,830515,1074638,2379713);				  
 
-create or replace view film_real as 
-select 
-	f.num_film, f.titre, f.genre, f.annee, f.duree, 
-	f.num_real, i.nom, i.prenom 
-from film f join individu i on f.num_real = i.num_ind;
+create or replace view movies_007_all as select * from movies where id in 
+(55928,57076,58150,59800,62512,64757,66995,70328,71807,76752,79574,82398,86006,86034,90264,93428,97742,113189,120347,143145,246460,381061,830515,1074638,2379713);				  
 
-create or replace view film_qt as select * from film 
-where num_real in 
-	(select num_ind from individu where nom = 'Tarantino' and prenom = 'Quentin'); 
-	
+create or replace view movies_star_wars as select * from movies where id in 
+(76759,80684,86190,2488496,2527338);

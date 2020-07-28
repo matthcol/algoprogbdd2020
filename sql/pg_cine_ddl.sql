@@ -3,7 +3,7 @@ DROP TABLE if exists movies;
 DROP TABLE if exists stars;
 
 create table stars(
-	id serial constraint pk_individu primary key,
+	id serial constraint pk_stars primary key,
 	name character varying(150) NOT NULL,
 	birthdate date
 );
@@ -11,7 +11,7 @@ create table stars(
 CREATE TABLE movies
 (
     id serial 
-			CONSTRAINT pk_film PRIMARY KEY,
+			CONSTRAINT pk_movies PRIMARY KEY,
     title character varying(250) NOT NULL,
     year smallint NOT NULL 
 			CONSTRAINT chk_year CHECK (year >= 1888),
